@@ -26,23 +26,36 @@ const colorNames = [
   `olive`,
 ];
 
-const colorChange = (id) => {
-  let randomColor;
-  if (id === 1) {
-    randomColor = Math.floor(Math.random() * 16777215).toString(16);
+let currentMode = `simple`;
+
+simpleCat.addEventListener(
+  `click`,
+  (modeChange = () => {
+    currentMode === `simple`;
+  })
+);
+
+hexCat.addEventListener(
+  `click`,
+  (modeChange = () => {
+    currentMode === `hex`;
+  })
+);
+
+const colorChange = () => {
+  if (currentMode === `hex`) {
+    const randomColor = Math.floor(Math.random() * 16777215).toString(16);
     displayColorName.textContent = `#` + randomColor;
     body.style.backgroundColor = `#` + randomColor;
     return;
   }
-  if (id === 2) {
+  if (currentMode === `simple`) {
     const randomNum = Math.floor(Math.random() * colorNames.length);
-    randomColor = colorNames[randomNum];
+    const randomColor = colorNames[randomNum];
     displayColorName.textContent = " " + randomColor;
     body.style.backgroundColor = " " + randomColor;
     return;
   }
 };
 
-hexCat.addEventListener(`click`, colorChange(1));
-simpleCat.addEventListener(`click`, colorChange(2));
 btn.addEventListener(`click`, colorChange);

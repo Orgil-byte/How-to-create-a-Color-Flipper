@@ -28,19 +28,17 @@ const colorNames = [
 
 let currentMode = `simple`;
 
-simpleCat.addEventListener(
-  `click`,
-  (modeChange = () => {
-    currentMode === `simple`;
-  })
-);
+simpleCat.addEventListener(`click`, () => {
+  currentMode = `simple`;
+  simpleCat.style.color = `rgb(75, 171, 209)`;
+  hexCat.style.color = ``;
+});
 
-hexCat.addEventListener(
-  `click`,
-  (modeChange = () => {
-    currentMode === `hex`;
-  })
-);
+hexCat.addEventListener(`click`, () => {
+  currentMode = `hex`;
+  hexCat.style.color = `rgb(75, 171, 209)`;
+  simpleCat.style.color = ``;
+});
 
 const colorChange = () => {
   if (currentMode === `hex`) {
@@ -52,8 +50,8 @@ const colorChange = () => {
   if (currentMode === `simple`) {
     const randomNum = Math.floor(Math.random() * colorNames.length);
     const randomColor = colorNames[randomNum];
-    displayColorName.textContent = " " + randomColor;
-    body.style.backgroundColor = " " + randomColor;
+    displayColorName.textContent = randomColor;
+    body.style.backgroundColor = randomColor;
     return;
   }
 };
